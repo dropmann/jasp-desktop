@@ -200,12 +200,6 @@ QTableView::item::last
                </item>
                <item row="1" column="1">
                 <widget class="QWidget" name="pageOptions" native="true">
-                 <property name="maximumSize">
-                  <size>
-                   <width>590</width>
-                   <height>16777215</height>
-                  </size>
-                 </property>
                  <layout class="QGridLayout" name="gridLayout_4">
                   <property name="leftMargin">
                    <number>0</number>
@@ -231,7 +225,7 @@ QTableView::item::last
                      <enum>QFrame::NoFrame</enum>
                     </property>
                     <property name="verticalScrollBarPolicy">
-                     <enum>Qt::ScrollBarAlwaysOn</enum>
+                     <enum>Qt::ScrollBarAsNeeded</enum>
                     </property>
                     <property name="horizontalScrollBarPolicy">
                      <enum>Qt::ScrollBarAlwaysOff</enum>
@@ -244,7 +238,7 @@ QTableView::item::last
                       <rect>
                        <x>0</x>
                        <y>0</y>
-                       <width>552</width>
+                       <width>578</width>
                        <height>537</height>
                       </rect>
                      </property>

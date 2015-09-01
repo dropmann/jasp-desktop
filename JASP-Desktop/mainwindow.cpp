@@ -168,10 +168,18 @@ MainWindow::MainWindow(QWidget *parent) :
 	connect(this, SIGNAL(showAnalysesMenu(QString)), this, SLOT(showAnalysesMenuHandler(QString)));
 	connect(this, SIGNAL(removeAnalysisRequest(int)), this, SLOT(removeAnalysisRequestHandler(int)));
 
+#ifdef __WIN32__
+	QFontMetrics fm(ui->panelMid->font());
+	ui->panelMid->setMinimumWidth(75 * fm.width("X"));
+	ui->pageOptions->setMaximumWidth(75 * fm.width("X"));
+#endif
+
+	int scrollBarWidth = qApp->style()->pixelMetric(QStyle::PM_ScrollBarExtent);
+
 	_buttonPanel = new QWidget(ui->pageOptions);
 	_buttonPanelLayout = new QVBoxLayout(_buttonPanel);
 	_buttonPanelLayout->setSpacing(6);
-	_buttonPanelLayout->setContentsMargins(0, 12, 24, 0);
+	_buttonPanelLayout->setContentsMargins(0, 12, 0, 0);
 	_buttonPanel->setLayout(_buttonPanelLayout);
 
 	_okButton = new QPushButton(QString("OK"), _buttonPanel);
@@ -188,8 +196,9 @@ MainWindow::MainWindow(QWidget *parent) :
 	_buttonPanelLayout->addWidget(_menuButton);
 	_buttonPanelLayout->addStretch();
 
-	_buttonPanel->resize(_buttonPanel->sizeHint());
-	_buttonPanel->move(ui->panelMid->minimumWidth() - _buttonPanel->width(), 0);
+
+	_buttonPanel->resize(80 ,_buttonPanel->sizeHint().height());
+	_buttonPanel->move(ui->panelMid->minimumWidth() - _buttonPanel->width() - scrollBarWidth - 12, 0);
 
 	connect(_okButton, SIGNAL(clicked()), this, SLOT(analysisOKed()));
 	connect(_runButton, SIGNAL(clicked()), this, SLOT(analysisRunned()));
