@@ -169,9 +169,11 @@ MainWindow::MainWindow(QWidget *parent) :
 	connect(this, SIGNAL(removeAnalysisRequest(int)), this, SLOT(removeAnalysisRequestHandler(int)));
 
 #ifdef __WIN32__
+	QApplication::setFont(ui->tableView->font());
+
 	QFontMetrics fm(ui->panelMid->font());
-	ui->panelMid->setMinimumWidth(75 * fm.width("X"));
-	ui->pageOptions->setMaximumWidth(75 * fm.width("X"));
+	ui->panelMid->setMinimumWidth(63 * fm.width("X"));
+	ui->pageOptions->setMaximumWidth(63 * fm.width("X"));
 #endif
 
 	int scrollBarWidth = qApp->style()->pixelMetric(QStyle::PM_ScrollBarExtent);
